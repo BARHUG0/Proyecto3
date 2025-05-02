@@ -19,6 +19,15 @@ class Artist
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getArtistById($artist_id)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE id = :artist_id";
+        $stmt  = $this->conn->prepare($query);
+        $stmt->bindParam(':artist_id', $artist_id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     // Crear un nuevo artista
     public function createArtist($persona_id, $pseudonym, $description)
     {

@@ -3,23 +3,18 @@
 class Database
 {
     private $host     = 'localhost';
-    private $dbname   = 'artelier';
+    private $db_name   = 'artelier';
     private $username = '';
     private $password = '';
     private $conn;
 
-    public function connect()
-    {
+       public function getConnection() {
         $this->conn = null;
         try {
-            $this->conn = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->dbname,
-                $this->username,
-                $this->password
-            );
+            $this->conn = new PDO("pgsql:host={$this->host};dbname={$this->db_name}", $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
+        } catch (PDOException $exception) {
+            echo "Error de conexión: " . $exception->getMessage();
         }
 
         return $this->conn;
