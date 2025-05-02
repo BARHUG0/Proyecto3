@@ -1,0 +1,33 @@
+<?php
+
+require_once '../src/Models/PaintingProvenance.php';
+
+class PaintingProvenanceController
+{
+
+    private $paintingProvenanceModel;
+
+    public function __construct($db)
+    {
+        $this->paintingProvenanceModel = new PaintingProvenance($db);
+    }
+
+    // Obtener todas las procedencias de pintura
+    public function getPaintingProvenances()
+    {
+        $provenances = $this->paintingProvenanceModel->getAllProvenances();
+        echo json_encode($provenances);
+    }
+
+    // Crear una nueva procedencia de pintura
+    public function createPaintingProvenance()
+    {
+        $data = json_decode(file_get_contents("php://input"));
+        if (isset($data->painting_id, $data->transfer_type_id, $data->transfer_owner, $data->transfer_date)) {
+            $this->paintingProvenanceModel->createProvenance($data->painting_id, $data->transfer_type_id, $data->transfer_owner, $data->transfer_date, $data->description);
+            echo json_encode(["message" => "Procedencia de pintura creada exitosamente"]);
+        } else {
+            echo json_encode(["message" => "Faltan datos"]);
+        }
+    }
+}
