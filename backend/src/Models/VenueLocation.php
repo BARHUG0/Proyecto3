@@ -10,7 +10,6 @@ class VenueLocation
         $this->conn = $db;
     }
 
-    // Obtener todas las ubicaciones de los lugares
     public function getAllLocations()
     {
         $query = "SELECT * FROM " . $this->table;
@@ -19,7 +18,6 @@ class VenueLocation
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Crear una nueva ubicación de lugar
     public function createLocation($venue_id, $country, $address, $phone)
     {
         $query = "INSERT INTO " . $this->table . " (venue_id, country, address, phone)
@@ -30,5 +28,14 @@ class VenueLocation
         $stmt->bindParam(':address', $address);
         $stmt->bindParam(':phone', $phone);
         $stmt->execute();
+    }
+
+    public function getLocationById($venue_location_id)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE id = :venue_location_id";
+        $stmt  = $this->conn->prepare($query);
+        $stmt->bindParam(':venue_location_id', $venue_location_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

@@ -18,8 +18,15 @@ class Painting
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getPaintingById($painting_id)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE id = :painting_id";
+        $stmt  = $this->conn->prepare($query);
+        $stmt->bindParam(':painting_id', $painting_id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
-    // Crear una nueva pintura
     public function createPainting($artist_id, $signature_location_id, $width, $height, $depth, $title, $execution_date, $description, $includes_authenticity_certificate, $full_condition_report)
     {
         $query = "INSERT INTO " . $this->table . " (artist_id, signature_location_id, width, height, depth, title, execution_date, description, includes_authenticity_certificate, full_condition_report)

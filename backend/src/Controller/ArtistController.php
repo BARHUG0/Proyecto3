@@ -1,6 +1,6 @@
 <?php
 
-require_once '../src/Models/Artist.php';
+require_once __DIR__ . '/../Models/Artist.php';
 
 class ArtistController
 {
@@ -17,6 +17,23 @@ class ArtistController
     {
         $artists = $this->artistModel->getAllArtists();
         echo json_encode($artists);
+    }
+
+    public function getArtistReport()
+    {
+        $artists = $this->artistModel->getAllArtists();
+        $report  = [];
+        foreach ($artists as $artist) {
+            $full_name = $artist['first_given_name'] . ' ' . $artist['second_given_name'];
+            $report[]  = [
+                'full_name'   => $full_name,
+                'pseudonym'   => $artist['pseudonym'],
+                'description' => $artist['description'],
+                'created_at'  => $artist['created_at'],
+                'updated_at'  => $artist['updated_at'],
+            ];
+        }
+        echo json_encode($report);
     }
 
     // Crear un nuevo artista
