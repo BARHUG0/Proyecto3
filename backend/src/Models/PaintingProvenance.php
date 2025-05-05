@@ -19,6 +19,15 @@ class PaintingProvenance
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getAllPaintingProvenances()
+    {
+        $query = "SELECT p.title, t.name, pp.transfer_owner, pp.transfer_date, pp.description  FROM painting_provenance AS pp JOIN painting AS p ON p.id = pp.painting_id JOIN transfer_type AS t ON t.id = pp.transfer_type_id";
+        $stmt  = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
     // Crear una nueva procedencia de pintura
     public function createProvenance($painting_id, $transfer_type_id, $transfer_owner, $transfer_date, $description)
     {

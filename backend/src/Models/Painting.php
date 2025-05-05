@@ -27,6 +27,14 @@ class Painting
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getAllPaintingConditions()
+    {
+        $query = "SELECT p.title, c.note, p.full_condition_report FROM painting_condition_summary AS pc JOIN painting AS p ON p.id = pc.painting_id JOIN condition_notes AS c ON c.id = pc.condition_note_id ORDER BY p.title";
+        $stmt  = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function createPainting($artist_id, $signature_location_id, $width, $height, $depth, $title, $execution_date, $description, $includes_authenticity_certificate, $full_condition_report)
     {
         $query = "INSERT INTO " . $this->table . " (artist_id, signature_location_id, width, height, depth, title, execution_date, description, includes_authenticity_certificate, full_condition_report)

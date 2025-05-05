@@ -18,6 +18,20 @@ class PaintingMaterialsController
         $relations = $this->paintingMaterialsModel->getAllRelations();
         echo json_encode($relations);
     }
+    
+    public function getPaintingMaterialsReport()
+    {
+        $rawreport = $this->paintingMaterialsModel->getMaterialsByPaintingReport();
+        $report  = [];
+        foreach ($rawreport as $raw) {
+            $report[]  = [
+                'title'   => $raw['title'],
+                'name'   => $raw['name'],
+            ];
+        }
+        echo json_encode($report);
+
+    }
 
     // Crear una nueva relación entre pintura y material
     public function createPaintingMaterial()

@@ -19,6 +19,25 @@ class PaintingProvenanceController
         echo json_encode($provenances);
     }
 
+    
+    public function getProvenanceReport()
+    {
+        $provenances = $this->paintingProvenanceModel->getAllPaintingProvenances();
+        $report    = [];
+        foreach ($provenances as $provenance) {
+            $report[] = [
+                'title' => $provenance['title'],
+                'name'  => $painting['name'],
+                'transfer_owner' => $painting['transfer_owner'],
+                'transfer_date' => $painting['transfer_date'],
+                'description' => $painting['description'],
+            ];
+            echo json_encode($report);
+        }
+
+    }
+
+
     // Crear una nueva procedencia de pintura
     public function createPaintingProvenance()
     {

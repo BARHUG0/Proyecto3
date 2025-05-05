@@ -13,6 +13,8 @@ $paintingController = new PaintingController($db);
 $saleController = new SaleController($db);
 $paintingExhibitionsController = new PaintingExhibitionsController($db);
 $artistController = new ArtistController($db);
+$paintingMaterialsController = new PaintingMaterialsController($db);
+$paintingProvenanceController = new PaintingProvenanceController($db);
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/artworks') {
     $paintingController->getArtworksReport(); 
@@ -22,6 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/artworks
     $paintingExhibitionsController->getExhibitionsReport();
 } else if (($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/artists')) {
     $artistController->getArtistReport();
-} else {
+} else if (($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/paintings/materials')) {
+    $paintingMaterialsController->getPaintingMaterialsReport();
+}else if (($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/paintings/conditions')) {
+    $paintingController->getConditionReport();
+}else if (($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/paintings/provenances')) {
+    $paintingProvenanceController->getProvenanceReport();
+}else {
     echo "Ruta no encontrada.";
 }
+
+

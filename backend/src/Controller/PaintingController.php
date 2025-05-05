@@ -63,6 +63,21 @@ class PaintingController
         }
 
     }
+
+    public function getConditionReport()
+    {
+        $conditions = $this->paintingModel->getAllPaintingConditions();
+        $report    = [];
+        foreach ($conditions as $condition) {
+            $report[] = [
+                'title'                             => $painting['title'],
+                'note'                        => $painting['note'],
+                'full_condition_report'                        => $painting['full_condition_report'],
+            ];
+            echo json_encode($report);
+        }
+
+    }
     private function getArtistById($artist_id)
     {
         return $this->artistModel->getArtistById($artist_id);
