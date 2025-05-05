@@ -19,6 +19,15 @@ class Sale
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getSaleById($sale_id)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE id = :sale_id";
+        $stmt  = $this->conn->prepare($query);
+        $stmt->bindParam(':sale_id', $sale_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     // Crear una nueva venta
     public function createSale($painting_id, $seller_id, $beginning_date, $ending_date, $sold_date, $lowest_estimated_price, $highest_estimated_price, $base_price, $sold_price, $is_available)
     {
