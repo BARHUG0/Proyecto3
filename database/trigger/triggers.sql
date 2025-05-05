@@ -1,3 +1,25 @@
+CREATE OR REPLACE FUNCTION check_dealer_fk()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.dealer_type_id = 1 THEN
+        IF NOT EXISTS (SELECT * FROM app_user WHERE id = NEW.dealer_entity_id) THEN
+            RAISE EXCEPTION 'Invalid user id for dealer';
+        END IF;
+    ELSIF NEW.dealer_type_id = 2 THEN
+        IF NOT EXISTS (SELECT * FROM venue WHERE id = NEW.dealer_entity_id) THEN
+            RAISE EXCEPTION 'Invalid venue id for dealer';
+        END IF;
+    ELSE 
+        RAISE EXCEPTION 'Invalid dealer type';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER before_insert_dealer
+BEFORE INSERT OR UPDATE ON dealer
+FOR EACH ROW EXECUTE FUNCTION check_dealer_fK(); 
+
 CREATE OR REPLACE FUNCTION log_update_on_table()
 RETURNS TRIGGER AS $$ 
     BEGIN
@@ -50,4 +72,6 @@ CREATE OR REPLACE TRIGGER before_update_cart
 BEFORE UPDATE ON cart
 FOR EACH ROW 
 EXECUTE FUNCTION log_update_on_table();
+
+
 
