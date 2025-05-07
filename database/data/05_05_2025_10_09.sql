@@ -683,8 +683,6 @@ insert into cart (buyer_id, buyer_shipping_address_id, buyer_billing_address_id,
 insert into cart (buyer_id, buyer_shipping_address_id, buyer_billing_address_id, payment_status_id, subtotal, tax_rate, shipping_fee, total, payment_method, paid_at) values (94, 96, 100, 3, 57.93, 0.03, 18.61, 273.23, 'in', null);
 insert into cart (buyer_id, buyer_shipping_address_id, buyer_billing_address_id, payment_status_id, subtotal, tax_rate, shipping_fee, total, payment_method, paid_at) values (9, 61, 10, 2, 45.37, 0.46, 12.02, 206.49, 'bibendum', null);
 
-SELECT * FROM cart;
-UPDATE cart SET id = id -1;
 
 insert into cart_items (cart_id, sale_id) values (29, 39);
 insert into cart_items (cart_id, sale_id) values (32, 27);
