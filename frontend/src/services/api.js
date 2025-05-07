@@ -1,8 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://localhost:8080',
-
+  baseURL: 'http://localhost:8002',
 });
 
-export default api;
+export const getPaintings = () => api.get('/paintings');
+export const getSales = () => api.get('/sales');
+export const getExhibitions = () => api.get('/paintings/exhibitions');
+export const getMaterials = () => api.get('/paintings/materials');
+export const getConditions = () => api.get('/paintings/conditions');
+export const getProvenances = () => api.get('/paintings/provenances');
