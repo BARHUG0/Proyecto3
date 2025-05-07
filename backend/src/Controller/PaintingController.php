@@ -59,8 +59,9 @@ class PaintingController
                 'created_at'                        => $painting['created_at'],
                 'updated_at'                        => $painting['updated_at'],
             ];
-            echo json_encode($report);
+            
         }
+        echo json_encode($report);
 
     }
 
@@ -70,9 +71,9 @@ class PaintingController
         $report    = [];
         foreach ($conditions as $condition) {
             $report[] = [
-                'title'                             => $painting['title'],
-                'note'                        => $painting['note'],
-                'full_condition_report'                        => $painting['full_condition_report'],
+                'title'                             => $condition['title'],
+                'note'                        => $condition['note'],
+                'full_condition_report'                        => $condition['full_condition_report'],
             ];
             echo json_encode($report);
         }

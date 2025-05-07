@@ -5,6 +5,8 @@ require_once 'src/Controller/PaintingController.php';
 require_once 'src/Controller/SaleController.php'; 
 require_once 'src/Controller/PaintingExhibitionsController.php'; 
 require_once 'src/Controller/ArtistController.php'; 
+require_once 'src/Controller/PaintingMaterialsController.php';
+require_once 'src/Controller/PaintingProvenanceController.php';
 
 $database = new Database();
 $db       = $database->getConnection();
@@ -16,11 +18,11 @@ $artistController = new ArtistController($db);
 $paintingMaterialsController = new PaintingMaterialsController($db);
 $paintingProvenanceController = new PaintingProvenanceController($db);
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/artworks') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/paintings') {
     $paintingController->getArtworksReport(); 
 } else if (($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/sales')) {
     $saleController->getSalesReport();
-} else if (($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/exhibitions')) {
+} else if (($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/paintings/exhibitions')) {
     $paintingExhibitionsController->getExhibitionsReport();
 } else if (($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/artists')) {
     $artistController->getArtistReport();

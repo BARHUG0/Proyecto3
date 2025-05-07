@@ -1,6 +1,6 @@
 <?php
 
-require_once '../src/Models/PaintingMaterials.php';
+require_once __DIR__ . '/../Models/PaintingMaterials.php';
 
 class PaintingMaterialsController
 {

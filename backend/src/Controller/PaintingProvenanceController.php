@@ -1,6 +1,6 @@
 <?php
 
-require_once '../src/Models/PaintingProvenance.php';
+require_once __DIR__ . '/../Models/PaintingProvenance.php';
 
 class PaintingProvenanceController
 {
@@ -27,13 +27,14 @@ class PaintingProvenanceController
         foreach ($provenances as $provenance) {
             $report[] = [
                 'title' => $provenance['title'],
-                'name'  => $painting['name'],
-                'transfer_owner' => $painting['transfer_owner'],
-                'transfer_date' => $painting['transfer_date'],
-                'description' => $painting['description'],
+                'name'  => $provenance['name'],
+                'transfer_owner' => $provenance['transfer_owner'],
+                'transfer_date' => $provenance['transfer_date'],
+                'description' => $provenance['description'],
             ];
-            echo json_encode($report);
+            
         }
+        echo json_encode($report);
 
     }
 
