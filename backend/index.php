@@ -1,5 +1,10 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+
+
 require_once 'src/Database/Database.php';             
 require_once 'src/Controller/PaintingController.php'; 
 require_once 'src/Controller/SaleController.php'; 
