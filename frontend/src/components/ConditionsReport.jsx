@@ -10,9 +10,9 @@ const ConditionsReport = () => {
       if (Array.isArray(res.data)) setConditions(res.data);
     }).catch(() => setConditions([]));
   }, []);
+  
 
   const columns = ['title', 'note', 'full_condition_report'];
-
   return (
     <div>
       <h2>Reporte de Condiciones</h2>
