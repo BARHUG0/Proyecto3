@@ -4,7 +4,6 @@ require_once __DIR__ . '/../Models/Painting.php';
 require_once __DIR__ . '/../Models/Artist.php';
 require_once __DIR__ . '/../Models/SignatureLocation.php';
 
-
 class PaintingController
 {
 
@@ -59,7 +58,7 @@ class PaintingController
                 'created_at'                        => $painting['created_at'],
                 'updated_at'                        => $painting['updated_at'],
             ];
-            
+
         }
         echo json_encode($report);
 
@@ -68,16 +67,15 @@ class PaintingController
     public function getConditionReport()
     {
         $conditions = $this->paintingModel->getAllPaintingConditions();
-        $report    = [];
+        $report     = [];
         foreach ($conditions as $condition) {
             $report[] = [
-                'title'                             => $condition['title'],
-                'note'                        => $condition['note'],
-                'full_condition_report'                        => $condition['full_condition_report'],
+                'title'                 => $condition['title'],
+                'note'                  => $condition['note'],
+                'full_condition_report' => $condition['full_condition_report'],
             ];
-            echo json_encode($report);
         }
-
+        echo json_encode($report);
     }
     private function getArtistById($artist_id)
     {
