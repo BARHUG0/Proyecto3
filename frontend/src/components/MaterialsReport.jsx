@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getMaterials } from '../services/api';
 import ReportTable from './ReportTable';
-import ButtonExportPDF from '../components/buttonExportPDF'
+import ButtonExportPDF from './ButtonExportPDF'
+import ButtonExportCSV from './ButtonExportCSV'
 
 
 const MaterialsReport = () => {
@@ -54,6 +55,12 @@ const MaterialsReport = () => {
           data={filtered}
           filename="reporte_materiales.pdf"
           title="Reporte de Materiales"
+        />
+
+        <ButtonExportCSV
+          columns={columns}
+          data={filtered}
+          filename="reporte_materiales.csv"
         />
       </div>
       {/* Filtros */}

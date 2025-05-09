@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { getConditions } from '../services/api';
 import ReportTable from './ReportTable';
-import ButtonExportPDF from '../components/buttonExportPDF';
+import ButtonExportPDF from './ButtonExportPDF';
+import ButtonExportCSV from './ButtonExportCSV';
+
 
 const ConditionsReport = () => {
   const [conditions, setConditions] = useState([]);
@@ -53,6 +55,11 @@ const ConditionsReport = () => {
           data={filtered}
           filename="reporte_condiciones.pdf"
           title="Reporte de Condiciones"
+        />
+        <ButtonExportCSV
+          columns={columns}
+          data={filtered}
+          filename="reporte_condiciones.csv"
         />
       </div>
 

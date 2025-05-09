@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getProvenances } from '../services/api';
 import ReportTable from './ReportTable';
-import ButtonExportPDF from '../components/buttonExportPDF'
+import ButtonExportPDF from './ButtonExportPDF';
+import ButtonExportCSV from './ButtonExportCSV';
 
 
 const ProvenancesReport = () => {
@@ -60,6 +61,11 @@ const ProvenancesReport = () => {
           data={filtered}
           filename="reporte_procedencias.pdf"
           title="Reporte de Procedencias"
+        />
+        <ButtonExportCSV
+          columns={columns}
+          data={filtered}
+          filename="reporte_procedencias.csv"
         />
       </div>
       {/* Filtros */}
