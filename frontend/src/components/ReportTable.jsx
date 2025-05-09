@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const ReportTable = ({ columns, data }) => {
   if (!Array.isArray(data) || data.length === 0) {
     return <p className="text-gray-500 italic ">No hay datos disponibles.</p>;

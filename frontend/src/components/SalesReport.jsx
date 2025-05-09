@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getSales } from '../services/api';
 import ReportTable from './ReportTable';
+import ButtonExportPDF from '../components/buttonExportPDF'
+
 
 const SalesReport = () => {
   const [sales, setSales] = useState([]);
@@ -53,7 +55,16 @@ const SalesReport = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">Reporte de Ventas</h2>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+
+        <h2 className="text-xl font-semibold mb-4">Reporte de Ventas</h2>
+        <ButtonExportPDF
+          columns={columns}
+          data={filtered}
+          filename="reporte_ventas.pdf"
+          title="Reporte de Ventas"
+        />
+      </div>
 
       {/* Filtros */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-6">

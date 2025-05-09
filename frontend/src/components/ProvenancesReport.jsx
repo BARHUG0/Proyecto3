@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getProvenances } from '../services/api';
 import ReportTable from './ReportTable';
+import ButtonExportPDF from '../components/buttonExportPDF'
+
 
 const ProvenancesReport = () => {
   const [provenances, setProvenances] = useState([]);
@@ -13,6 +15,7 @@ const ProvenancesReport = () => {
   const [endDate, setEndDate] = useState('');
   const [descriptionKeyword, setDescriptionKeyword] = useState('');
   const [orderAsc, setOrderAsc] = useState(true);
+  
 
   useEffect(() => {
     getProvenances().then(data => {
@@ -48,8 +51,17 @@ const ProvenancesReport = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">Reporte de Procedencias</h2>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
 
+        <h2 className="text-xl font-semibold mb-4">Reporte de Procedencias</h2>
+
+        <ButtonExportPDF
+          columns={columns}
+          data={filtered}
+          filename="reporte_procedencias.pdf"
+          title="Reporte de Procedencias"
+        />
+      </div>
       {/* Filtros */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-6">
         <input
