@@ -8,17 +8,15 @@ El proyecto sigue el patrón Modelo-Vista-Controlador (MVC). Aquí tienes los m�
 
 1. Modelo (Model)
    Contiene la lógica de negocio y el acceso a los datos. Es responsable de consultar y manipular la base de datos.
-   Ejemplo: Artist.php, Sale.php, Database.php.
+   Ejemplo: `Artist.php`, `Sale.php`, `Database.php`.
 
 2. Vista (View)
    Es la interfaz gráfica o el contenido que se muestra al usuario. En aplicaciones web, suele estar compuesta por archivos HTML, CSS y a       veces JavaScript.
-   Ejemplo: index.html, productos.php, formulario.php.
+   Ejemplo: `index.html`, `productos.php`, `formulario.php`.
 
 3. Controlador (Controller)
    Actúa como intermediario entre el Modelo y la Vista. Recibe las peticiones del usuario, procesa los datos con ayuda del Modelo y             selecciona la Vista adecuada para responder.
    Ejemplo: `ArtistController.php`, `SaleController.php`.
-
-
 
 ## 🏗️ Estructura
 ```
