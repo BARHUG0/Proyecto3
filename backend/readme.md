@@ -55,11 +55,11 @@ $results = $query->fetchAll(PDO::FETCH_ASSOC);
 - PostgreSQL (local o remoto)
 
 ## 🧪 Para probar conexión:
-En terminal
+En terminal dentro de la carpeta donde se encuentra guardado todo, correr el siguiente comando.
 ```
 php -S localhost:8000 -t backend
 ```
-Luego abrir en web `localhost:8000`
+Luego abrir en tu navegador `localhost:8000`
 
 # 🛑 Nota: Nunca subas tu archivo database.php con credenciales reales a un repositorio público. Usa database.example.php como plantilla y agrégalo al .gitignore. 🛑
 
