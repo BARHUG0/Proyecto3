@@ -28,21 +28,27 @@ function App() {
       case 'materials': return <MaterialsReport />;
       case 'conditions': return <ConditionsReport />;
       case 'provenances': return <ProvenancesReport />;
-      default: return <p>Selecciona un reporte del menú.</p>;
+      default: return <p className="text-gray-600 mt-6">Selecciona un reporte del menú.</p>;
     }
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '2rem auto' }}>
-      <h1>Reportes de Galería de Arte</h1>
-      <Select
-        options={reportOptions}
-        placeholder="Selecciona un reporte"
-        onChange={setSelected}
-        isClearable
-      />
-      <div style={{ marginTop: '2rem' }}>
-        {renderReport()}
+    <div className="min-h-screen bg-gray-50 text-gray-800 px-4 py-8">
+      <div className="max-w-6xl mx-auto">
+        
+        <h1 className="text-3xl font-bold mb-6 text-center">Reportes de Galería de Arte</h1>
+        <div className="mb-8">
+          <Select
+            options={reportOptions}
+            placeholder="Selecciona un reporte"
+            onChange={setSelected}
+            isClearable
+            className="text-gray-900"
+          />
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          {renderReport()}
+        </div>
       </div>
     </div>
   );

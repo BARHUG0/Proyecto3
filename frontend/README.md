@@ -1,12 +1,100 @@
-# React + Vite
+# Frontend - Reportes Galería de Arte
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es la interfaz gráfica de un sistema de reportes para una galería de arte. Permite visualizar, filtrar y exportar datos sobre obras, ventas, condiciones, materiales, procedencias y exhibiciones.
 
-Currently, two official plugins are available:
+## 📦 Tecnologías utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Axios](https://axios-http.com/)
+- [jsPDF + jspdf-autotable](https://github.com/parallax/jsPDF) (exportar PDF)
+- Exportación a CSV con `Blob` y `URL.createObjectURL`
 
-## Expanding the ESLint configuration
+## 🧾 Funcionalidades principales
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Visualización de reportes por categoría:
+  - Obras
+  - Ventas
+  - Condiciones
+  - Materiales
+  - Procedencias
+  - Exhibiciones
+- Filtros personalizados por reporte (texto, fechas, precios, etc.)
+- Orden ascendente/descendente por campo principal
+- Exportación de cada reporte a PDF o CSV, aplicando los filtros activos
+
+## 🚀 Instrucciones para ejecutar el proyecto
+
+1. Clona este repositorio:
+
+```bash
+git clone https://github.com/tu-usuario/frontend-galeria-reportes.git
+```
+
+2. Entra a la carpeta del proyecto:
+
+```bash
+cd frontend-galeria-reportes
+```
+
+3. Instala las dependencias:
+
+```bash
+npm install
+```
+
+4. Ejecuta el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+5. Asegúrate de que el backend esté corriendo en el puerto correcto (por ejemplo, `http://localhost:8002`) o ajusta la URL base en `src/services/api.js`.
+
+```bash
+const api = axios.create({
+  baseURL: 'http://localhost:8002', // ← cámbialo según tu backend
+});
+
+```
+
+## 📁 Estructura del proyecto
+```bash
+
+├── public/
+├── src/
+│ ├── components/
+│ │ ├── ReportTable.jsx
+│ │ ├── ButtonExportPDF.jsx
+│ │ ├── ButtonExportCSV.jsx
+│ │ └── [Reportes].jsx
+│ ├── services/
+│ │ └── api.js
+│ ├── utils/
+│ │ ├── exportToPDF.js
+│ │ └── exportToCSV.js
+│ └── App.jsx
+├── README.md
+├── index.html
+└── package.json
+```
+
+## 🖼️ Vista previa
+
+Cada sección muestra una tabla con filtros dinámicos y botones para exportar:
+
+- Botón "Exportar a PDF" (rojo)
+- Botón "Exportar a CSV" (verde)
+
+Las tablas responden a los filtros aplicados y se actualizan automáticamente.
+
+## 📌 Notas adicionales
+
+- El diseño está optimizado para pantallas pequeñas y grandes usando Tailwind.
+- Las rutas del backend pueden ajustarse en `api.js`.
+- Si quieres agregar más filtros o reportes, puedes seguir la misma estructura de los componentes existentes.
+
+## 👨‍💻 Autores
+
+Desarrollado por [Esteban Cárcamo], [Hugo Barillas] y [Ernesto Ascencio]

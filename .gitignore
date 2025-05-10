@@ -1,2 +1,1 @@
-./backend/src/Database/Database.php
-.env
+backend/src/Database/Database.php
