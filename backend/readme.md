@@ -33,6 +33,25 @@ DB_NAME=nombre_base_datos
 DB_USER=usuario
 DB_PASSWORD=contraseña
 ```
+2. Asegúrate de que estas variables estén disponibles para PHP. Si usas Apache o NGINX, puedes declararlas en tu php.ini o usar putenv() en tu script de arranque.
+
+3. Renombra database.example.php a database.php y usa esta clase para obtener una conexión:
+
+```
+require_once 'database.php';
+
+$db = new Database();
+$conn = $db->getConnection();
+
+// Ejemplo de consulta
+$query = $conn->query('SELECT * FROM productos');
+$results = $query->fetchAll(PDO::FETCH_ASSOC);
+```
+
+## Requisitos
+- PHP 7.4 o superior
+- Extensión PDO habilitada
+- PostgreSQL (local o remoto)
 
 Para probar conexión:
 ```
