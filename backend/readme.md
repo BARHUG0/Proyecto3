@@ -4,12 +4,13 @@ Este proyecto incluye una clase `Database` (ubicada en `database.example.php`) q
 base de datos PostgreSQL utilizando **PDO (PHP Data Objects)**.
 
 ## Estructura
-
+```
 backend/
 │
 ├── database.example.php # Archivo de ejemplo
 ├── index.php # Sección de rutas
 └── ...
+```
 
 ## ⚙️ Descripción
 
@@ -48,12 +49,17 @@ $query = $conn->query('SELECT * FROM productos');
 $results = $query->fetchAll(PDO::FETCH_ASSOC);
 ```
 
-## Requisitos
+## ⚠️ Requisitos
 - PHP 7.4 o superior
 - Extensión PDO habilitada
 - PostgreSQL (local o remoto)
 
-Para probar conexión:
+### 🧪 Para probar conexión:
+En terminal
 ```
 php -S localhost:8000 -t backend
 ```
+Luego abrir en web `localhost:8000`
+
+# 🛑 Nota: Nunca subas tu archivo database.php con credenciales reales a un repositorio público. Usa database.example.php como plantilla y agrégalo al .gitignore. 🛑
+
