@@ -26,31 +26,26 @@ Este proyecto es la interfaz gráfica de un sistema de reportes para una galerí
 
 ## 🚀 Instrucciones para ejecutar el proyecto
 
-1. Clona este repositorio:
+
+1. Entra a la carpeta del proyecto:
 
 ```bash
-git clone https://github.com/tu-usuario/frontend-galeria-reportes.git
+cd frontend
 ```
 
-2. Entra a la carpeta del proyecto:
-
-```bash
-cd frontend-galeria-reportes
-```
-
-3. Instala las dependencias:
+2. Instala las dependencias:
 
 ```bash
 npm install
 ```
 
-4. Ejecuta el servidor de desarrollo:
+3. Ejecuta el servidor de desarrollo:
 
 ```bash
 npm run dev
 ```
 
-5. Asegúrate de que el backend esté corriendo en el puerto correcto (por ejemplo, `http://localhost:8002`) o ajusta la URL base en `src/services/api.js`.
+4. Asegúrate de que el backend esté corriendo en el puerto correcto (por ejemplo, `http://localhost:8002`) o ajusta la URL base en `src/services/api.js`.
 
 ```bash
 const api = axios.create({
