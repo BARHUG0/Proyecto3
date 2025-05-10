@@ -54,7 +54,7 @@ $results = $query->fetchAll(PDO::FETCH_ASSOC);
 - Extensión PDO habilitada
 - PostgreSQL (local o remoto)
 
-### 🧪 Para probar conexión:
+## 🧪 Para probar conexión:
 En terminal
 ```
 php -S localhost:8000 -t backend
